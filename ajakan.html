@@ -4,17 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be Mine?</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #ff9aa2;
+            --secondary-color: #ffe6e6;
+            --accent-color: #ffccd5;
+            --text-color: #4a4a4a;
+            --button-yes-color: #e63946;
+            --button-no-color: #b0c4de;
+        }
+
+        /* Background gradasi */
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+            animation: fadeInBody 1.2s ease-in forwards;
+        }
+
+        @keyframes fadeInBody {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Kontainer utama */
+        .container {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 128, 171, 0.3);
+            max-width: 500px;
+            width: 90%;
+            box-sizing: border-box;
+            animation: slideUp 1.5s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(25px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Dekorasi hati di background */
+        .container::before {
+            content: "❤️";
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-size: 2em;
+            opacity: 0.6;
+            animation: floatHeart 3s ease-in-out infinite alternate;
+        }
+
+        .container::after {
+            content: "💖";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 2em;
+            opacity: 0.6;
+            animation: floatHeart 3s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes floatHeart {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+
+        /* Teks pertanyaan */
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #444;
+            animation: fadeInText 1s ease-in forwards;
+        }
+
+        .question-text:nth-child(1) { animation-delay: 0.3s; }
+        .question-text:nth-child(2) { animation-delay: 0.6s; }
+        .question-text:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gambar (gif atau foto) */
+        .gif_container {
+            margin: 25px auto 30px;
+            width: 170px;
+            height: 170px;
+            overflow: hidden;
+            border-radius: 15px;
+            background: var(--accent-color);
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.2);
+        }
+
+        .gif_container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: sway 2.8s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+
+        /* Tombol */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .yes-button {
+            background-color: var(--button-yes-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+        }
+
+        .yes-button:hover {
+            background-color: #ff4d6d;
+            transform: scale(1.08);
+            box-shadow: 0 6px 15px rgba(255, 77, 109, 0.5);
+        }
+
+        .no-button {
+            background-color: var(--button-no-color);
+            color: #333;
+        }
+
+        .no-button:hover {
+            background-color: #c8d6e5;
+            transform: scale(1.05);
+        }
+
+        /* Efek responsif untuk HP */
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 18px;
+            }
+
+            .question-text {
+                font-size: 0.95em;
+            }
+
+            .gif_container {
+                width: 130px;
+                height: 130px;
+            }
+
+            button {
+                font-size: 0.9em;
+                padding: 10px 22px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="question-text">Kamu mau ngga jadi pasangan aku? 💖</h1>
+        <h2 class="question-text">Aku tau kalo aku ngga seperti cowo diluaran sana, aku ngga sepeka dan seromantis mereka.</h2>
+        <h2 class="question-text">"But I Will Try and Give My Everything for You"</h2>
+        <h2 class="question-text">Jadi Kak Elia Dwi Febrianti, mau ngga kakak nerima aku, Yoga Mardiana Putra, sebagai pasangan kakak?</h2>
+
         <div class="gif_container">
-            <img id="main-gif" src="5.png" alt="Cute GIF" >
+            <img id="main-gif" src="5.png" alt="Cute GIF">
         </div>
+
         <div class="buttons">
-            <button class="yes-button" onclick="window.location.href='yes_response.html'">Iya</button>
-            <button class="no-button" onclick="alert('Yakin nih? 😢')">Ngga</button>
+            <button class="yes-button" onclick="window.location.href='yes_response.html'">Iya 💞</button>
+            <button class="no-button" onclick="alert('Yakin nih? 😢')">Ngga 😢</button>
         </div>
     </div>
 </body>
